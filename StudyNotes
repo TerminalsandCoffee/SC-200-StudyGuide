@@ -1,0 +1,190 @@
+Absolutely—let’s gather **everything we’ve covered so far** into a single, organized, easy-to-review summary you can use for reflection and retention.
+
+I’m going to break this into **topic sections with the Quick Memory Tips and clarifying notes** to make it digestible.
+
+---
+
+# 🎯 SC-200 Study Reflection Summary
+
+## 🟢 Microsoft Sentinel
+
+✅ **Sentinel Workspaces**
+
+* **What is it?** A Log Analytics workspace + Sentinel solution layered on top.
+* **Needed to deploy Sentinel:**
+
+  * Azure subscription
+  * Microsoft Entra tenant (Azure AD)
+  * Log Analytics workspace
+
+✅ **First step when deploying Sentinel:**
+
+> **Create a Log Analytics workspace.**
+
+---
+
+✅ **Livestream Queries**
+
+* **Livestream = Real-time streaming view of incoming events.**
+* **Rule:**
+
+> **Livestream queries cannot have time filters (e.g., `TimeGenerated > ago(7d)`).**
+
+* If you see `ago()` or any fixed time range—**remove it**.
+
+---
+
+✅ **Bookmarks vs. Watchlists**
+
+* **Bookmark:** Save query results as evidence for investigations.
+
+  * Shows in the **investigation graph.**
+* **Watchlist:** Static list of values (usernames, IPs) you reference in queries.
+
+  * **Does NOT** store query results.
+* **Quick Tip:**
+
+> **Need evidence? Bookmark. Need lookup list? Watchlist.**
+
+---
+
+✅ **Entity Mapping in Hunting Queries**
+
+* Some fields can be mapped to entities in Sentinel:
+
+  * `UserPrincipalName` → Account entity
+  * `IPAddress` → IP entity
+  * `AppDisplayName` → Cloud app entity
+  * `Reason` → ❌ No entity mapping
+* **Quick Tip:**
+
+> **Descriptive fields (e.g., Reason) can’t map to entities.**
+
+---
+
+✅ **Roles**
+
+* **Sentinel Responder:** Manage incidents (assign, close).
+* **Logic App Operator:** Run (but not edit) playbooks.
+* **Contributor:** Full edit permissions on rules and configs—**too much for Tier 1 analysts.**
+* **Quick Tip:**
+
+> **Need least privilege to manage incidents and run playbooks? Responder + Logic App Operator.**
+
+---
+
+✅ **Data Connectors**
+
+* **Collect SharePoint/Teams logs:** Microsoft 365 connector.
+* **Collect Defender for Office 365 alerts:** Defender for Office 365 connector.
+* **Quick Tip:**
+
+> **SharePoint activity = Microsoft 365 connector.**
+
+---
+
+✅ **KQL Basics**
+
+* **render:** Displays results as a chart.
+
+* **print:** Outputs a single row with scalar values.
+
+* **project:** Selects and orders columns.
+
+* **extend:** Adds calculated columns.
+
+* **summarize:** Groups rows and aggregates.
+
+* **Quick Tip:**
+
+> **render = chart. project = select. extend = new column. summarize = group + aggregate. print = single row.**
+
+---
+
+## 🟢 Microsoft Defender
+
+✅ **Custom Detection Rules in Hunting**
+
+* Must return **ReportId** and **Timestamp** columns.
+* **AlertId** is invalid here.
+* **Quick Tip:**
+
+> **Hunting detection? Always ReportId and Timestamp.**
+
+---
+
+✅ **Notification Rules**
+
+* **Threat analytics email notification rule:** Alerts about new threat intelligence content.
+* **Advanced Hunting detection rule:** Alerts on query matches.
+* **Alert email notification rule:** Emails you on alerts already generated (not new threat analytics).
+* **Quick Tip:**
+
+> **New threat intelligence? Use Threat Analytics Email Notification.**
+
+---
+
+✅ **Attack Surface Reduction**
+
+* Blocks unsigned executables from USB.
+* Blocks executable content from email.
+* **Quick Tip:**
+
+> **Blocking risky behavior? Attack Surface Reduction.**
+
+---
+
+✅ **Custom Network Indicators**
+
+* Allow/block specific IPs and URLs.
+* Different from web content filtering (which is category-based).
+* **Quick Tip:**
+
+> **Need to block a specific IP or domain? Custom network indicators.**
+
+---
+
+✅ **Suppression Rules**
+
+* Automatically close alerts from known benign sources (e.g., lab environments).
+* **Quick Tip:**
+
+> **Auto-close alerts from specific IP ranges? Suppression rule.**
+
+---
+
+---
+
+## 🟢 Defender for Servers (AWS context)
+
+✅ **To onboard AWS EC2 instances:**
+
+* Defender for Servers plan **enabled in Azure.**
+* Azure Arc-enabled servers **installed on EC2 instances.**
+* Log Analytics agent connected.
+* **Telegraf agent** – optional, for Linux Azure VMs only.
+* **Dependency agent** – optional, for service maps.
+* **Quick Tip:**
+
+> **AWS Defender? Arc + Defender Plan + Log Analytics Agent.**
+
+---
+
+✅ **Azure Pipelines Agent**
+
+* Used only for Azure DevOps pipelines.
+* **Does not** provide Defender connectivity.
+
+---
+
+---
+
+# 🟢 How to Use This Summary
+
+✅ **Review these Quick Tips regularly.**
+✅ **Rephrase them in your own words once a week to reinforce memory.**
+✅ **Practice identifying scenarios (e.g., “Which connector do I use?” “Which role do I assign?”).**
+
+---
+
+
