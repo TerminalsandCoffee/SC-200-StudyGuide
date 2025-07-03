@@ -51,14 +51,14 @@ SigninLogs
 
 | Operator   | What it does                | Example                |
 |------------|----------------------------|------------------------|
-| `where`    | Filters rows                | `| where EventID == 4625` |
-| `project`  | Selects and renames columns | `| project TimeGenerated, UserPrincipalName` |
-| `extend`   | Creates calculated columns  | `| extend Hour = datetime_part("hour", TimeGenerated)` |
-| `summarize`| Groups rows and aggregates  | `| summarize Count = count() by UserPrincipalName` |
-| `order by` | Sorts rows                  | `| order by TimeGenerated desc` |
-| `top`      | Gets top N rows             | `| top 10 by Count` |
-| `distinct` | Removes duplicates          | `| distinct UserPrincipalName` |
-| `render`   | Creates charts              | `| render timechart` |
+| `where`    | Filters rows                | | where EventID == 4625 |
+| `project`  | Selects and renames columns | | project TimeGenerated, UserPrincipalName |
+| `extend`   | Creates calculated columns  | | extend Hour = datetime_part("hour", TimeGenerated) |
+| `summarize`| Groups rows and aggregates  | | summarize Count = count() by UserPrincipalName |
+| `order by` | Sorts rows                  | | order by TimeGenerated desc |
+| `top`      | Gets top N rows             | | top 10 by Count |
+| `distinct` | Removes duplicates          | | distinct UserPrincipalName |
+| `render`   | Creates charts              | | render timechart |
 
 ---
 
